@@ -82,7 +82,9 @@ export const deleteInventoryItem = async (req, res) => {
 // @route GET /api/inventory/low-stock
 export const getLowStockItems = async (req, res) => {
   try {
-    const lowStock = await Inventory.find({ $expr: { $lt: ["$quantity", "$threshold"] } });
+    const lowStock = await Inventory.find(
+        { $expr: { $lt: ["$quantity", "$threshold"] } }
+    );
     res.status(200).json(lowStock);
   } catch (error) {
     res.status(500).json({ message: "Failed to fetch low stock items", error });

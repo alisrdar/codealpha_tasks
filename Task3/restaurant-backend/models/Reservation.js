@@ -3,10 +3,12 @@ import mongoose from "mongoose";
 const reservationSchema = new mongoose.Schema({
   customerName: {
     type: String,
-    required: true
+    required: true,
+    trim: true
   },
   customerPhone: {
-    type: String
+    type: String,
+    match: [/^\+?[0-9]{10,15}$/, "Invalid phone number"]
   },
   table: {
     type: mongoose.Schema.Types.ObjectId,
@@ -15,12 +17,19 @@ const reservationSchema = new mongoose.Schema({
   },
   time: {
     type: Date,
-    required: true,
-    default: Date.now
+    required: true 
+  },
+  duration: {
+    type: Number,
+    default: 120
+  },
+  people: {
+    type: Number,
+    required: true
   },
   status: {
     type: String,
-    enum: ["pending", "confirmed", "canceled"],
+    enum: ["pending", "confirmed", "canceled", "completed"],
     default: "pending"
   }
 }, { timestamps: true });
