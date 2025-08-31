@@ -10,9 +10,10 @@ const tableSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  isAvailable: {
-    type: Boolean,
-    default: true
+  status: {
+    type: String,
+    enum: ["available", "occupied", "reserved"],
+    default: "available"
   }
 }, { timestamps: true });
 

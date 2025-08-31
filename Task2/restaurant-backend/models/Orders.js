@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import MenuItem from "./MenuItem";
+import MenuItem from "./MenuItem.js";
 
 const orderSchema = new mongoose.Schema({
   customerName: {
@@ -7,7 +7,7 @@ const orderSchema = new mongoose.Schema({
     required: true
   },
   items: [{
-    MenuItem: {
+    menuItem: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "MenuItem",
       required: true
@@ -23,7 +23,7 @@ const orderSchema = new mongoose.Schema({
     ref: "Table",
     required: true
   },
-  totalAmount: {
+  totalPrice : {
     type: Number,
     required: true
   },

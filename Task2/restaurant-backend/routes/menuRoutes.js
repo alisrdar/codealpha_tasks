@@ -1,6 +1,6 @@
 import express from 'express';
 
-const menuRouter = express.menuRouter();
+const menuRouter = express.Router();
 
 import {
     getMenuItemById,

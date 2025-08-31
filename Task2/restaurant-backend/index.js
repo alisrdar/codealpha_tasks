@@ -2,8 +2,13 @@ import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import connectDB from './config/dbCon';
-import menuRouter from './routes/menuRoutes';
+import connectDB from './config/dbCon.js';
+
+import menuRouter from './routes/menuRoutes.js';
+import tableRouter from './routes/tableRoutes.js';
+import inventoryRouter from './routes/inventoryRoutes.js';
+import orderRouter from './routes/orderRoutes.js';
+import reservationRouter from './routes/reservationRoutes.js';
 
 dotenv.config();
 connectDB();
@@ -15,14 +20,13 @@ app.use(cors());
 app.use(express.json());
 
 //Routes
-app.use('/api/menu', menuRouter);``
+app.use('/api/menu', menuRouter);
 app.use('/api/tables', tableRouter);
 app.use('/api/inventory', inventoryRouter);
 app.use('/api/orders', orderRouter);
 app.use('/api/reservations', reservationRouter);
 
 // app.use('/api/auth', authRouter);
-
 
 const PORT = process.env.PORT || 5000;
 
